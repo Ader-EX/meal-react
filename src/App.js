@@ -3,6 +3,9 @@ import Meals from "./components/Meals/Meals";
 import Cart from "./components/Cart/Cart";
 import "./App.css";
 import { useState } from "react";
+import CartProvider from "./Store/CartProvider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [cartisShown, setCartIsShown] = useState(false);
@@ -16,11 +19,12 @@ function App() {
   };
 
   return (
-    <div className="bg">
+    <CartProvider className="bg">
       {cartisShown && <Cart onClose={hideCartHandler} />}
       <Header onShowCart={showCartHandler} />
       <Meals />
-    </div>
+      <ToastContainer />
+    </CartProvider>
   );
 }
 
